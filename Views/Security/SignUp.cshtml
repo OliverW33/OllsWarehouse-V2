@@ -1,0 +1,73 @@
+﻿
+@model OllsWarehouse.Models.SignUp
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "_FormLayout.cshtml";
+}
+
+<link href="~/css/User.css" rel="stylesheet" />
+
+<form asp-controller="Security" asp-action="SignUp" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <h2 class="auth-title text-center">Create An Account!</h2>
+    <div class="login-form-icon">
+        <i class="fas fa-user-circle fa-9x text-secondary"></i>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="firstName">First Name</label>
+                <input type="text" asp-for="firstName" class="form-control" />
+                <span asp-validation-for="firstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="lastName">Last Name</label>
+                <input type="text" asp-for="lastName" class="form-control" />
+                <span asp-validation-for="lastName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="userEmail">Email</label>
+        <input type="text" asp-for="userEmail" class="form-control" />
+        <span asp-validation-for="userEmail" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="userPassword">Password</label>
+                <input type="password" asp-for="userPassword" class="form-control" />
+                <span asp-validation-for="userPassword" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="userPasswordConfirmed">Re-Enter Password</label>
+                <input type="password" asp-for="userPasswordConfirmed" class="form-control" />
+                <span asp-validation-for="userPasswordConfirmed" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="userDateOfBirth">Date Of Birth</label>
+                <input type="date" asp-for="userDateOfBirth" class="form-control" />
+                <span asp-validation-for="userDateOfBirth" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="userName">User Name</label>
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>

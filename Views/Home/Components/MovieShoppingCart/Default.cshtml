@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+    ViewData["PageHeading"] = "Shopping Cart";
+    decimal shoppingCartTotal = 0;
+}
+
+<link href="~/css/ShoppingCart.css" rel="stylesheet" />
+
+<body>
+    <div class="shopping-container justify-content-center">
+        <h1 class="shopping-title text-center">Shopping Cart Summary</h1>
+        <p class="shopping-description text-center">Here you can manage your shopping cart!</p>
+
+        @if (Model.Count == 0)
+        {
+            <p class="shopping-description text-center">Shopping Cart is empty!</p>
+        }
+        else
+        {
+            @foreach (var movieItem in Model)
+            {
+                shoppingCartTotal += movieItem.movieAmount * movieItem.moviePrice;
+
+                <h4 class="text-center" style="color: white">@movieItem.movieTitle</h4>
+
+                <p class="text-center" style="color: white">@movieItem.movieAmount at &pound;@((movieItem.moviePrice).ToString("0.00")) each = 
+                    &pound;@((movieItem.movieAmount * movieItem.moviePrice).ToString("0.00"))</p>
+            }
+
+            <h4 class="shopping-title">Shopping Cart Total: &pound;@shoppingCartTotal.ToString("0.00")</h4>
+
+            <p class="shopping-description"><a asp-controller="Home" asp-action="ViewShoppingCart">Manage Cart</a></p>
+        }
+    </div>
+</body>

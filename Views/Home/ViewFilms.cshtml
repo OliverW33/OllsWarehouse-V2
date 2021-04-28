@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "View Available Films";
+    ViewData["PageHeading"] = "View Available Films";
+}
+
+<link href="~/css/ViewFilms.css" rel="stylesheet" />
+
+<body>
+    <div class="intro-header">
+        <h1 class="intro-header text-center">View all films</h1>
+    </div>
+    <div class="intro-description">
+        <p class="intro-description text-center">Here you will find all the available films and details on OllsWarehouse! Click on a movie title to find out more.</p>
+    </div>
+
+    <div class="movie-container">
+        @foreach (var item in Model)
+        {
+            <div class="movie-card">
+                <div class="movie-header">
+                    <div class="header-icon-container">
+                        <a asp-controller="Home" asp-action="ViewFilmDetails" asp-route-id="@item.movieID">
+                            <div><img class="movie-Image" src="~/images/@item.movieImage" width="270" height="375" /></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="movie-content">
+                    <div class="movie-content-header">
+                        <a asp-controller="Home" asp-action="ViewFilmDetails" asp-route-id="@item.movieID">
+                            <h3 class="movie-title">@item.movieTitle </h3>
+                        </a>
+                    </div>
+                    <div class="movie-info">
+                        <div class="info-section">
+                            <label>Movie ID</label>
+                            <span>@item.movieID</span>
+                        </div>
+                        <div class="info-section">
+                            <label>Movie Price</label>
+                            <span>@item.moviePrice </span>
+                        </div>
+                        <div class="info-section">
+                            <label>Movie Release Date</label>
+                            <span>@item.movieReleaseDate</span>
+                        </div>
+                        <div class="info-section">
+                            <label>Movie Rating</label>
+                            <span>@item.Stars</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>

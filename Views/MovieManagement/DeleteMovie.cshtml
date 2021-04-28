@@ -1,0 +1,25 @@
+﻿@model OllsWarehouse.Models.Films
+@{
+    Layout = "MovieManagement";
+    ViewData["Title"] = "Delete Film";
+    ViewData["PageHeading"] = "Delete Film";
+}
+
+<link href="~/css/FilmManipulation.css" rel="stylesheet" />
+
+<body>
+    <div class="movie-intro">
+        <h1 class="intro-header text-center">Delete Film</h1>
+    </div>
+    <div class="movie-description">
+        <p class="intro-description text-center">You are about to delete @Model.movieTitle!</p>
+    </div>
+
+    <form class="movie-deletion justify-content-center" method="post">
+        <input type="hidden" name="movieID" value="@Model.movieID" />
+        <p class="intro-description">Are you sure you would like to delete @Model.movieTitle?</p>
+        <p><input type="submit" value="Delete Movie" class="btn px-4 py-3 mr-4 btn-dark justify-content-center"></p>
+        <p><a asp-controller="MovieManagement" asp-action="Index" class="btn px-4 py-3 mr-4 btn-dark justify-content-center">Keep Movie</a><br></p>
+    </form>
+
+</body>

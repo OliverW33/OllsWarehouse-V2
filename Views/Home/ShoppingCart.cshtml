@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+    ViewData["PageHeading"] = "Shopping Cart";
+}
+
+<link href="~/css/ShoppingCart.css" rel="stylesheet" />
+
+<body>
+    <div class="movieCart text-center">
+        @await Component.InvokeAsync("MovieShoppingCart")
+    </div>
+
+</body>

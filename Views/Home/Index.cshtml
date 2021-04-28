@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["PageHeading"] = "Home Page";
+}
+
+<link href="~/css/MovieHomepage.css" rel="stylesheet" />
+
+<body>
+    <div class="movie-cotainer">
+        <div class="movie-content">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column justify-content-center">
+                    <h1 class="movie-title text-center">OllsWarehouse</h1>
+                    <h1 class="movie-title1 text-center">Welcome!</h1>
+                    <p class="movie-description text-center">Here you will be able to search and purchase movies of your choice!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="sectionBreak d-flex text-center justify-content-center">
+        <h1 class="sectionTitle">The Main Features</h1>
+    </div>
+    <br><br>
+
+    <div class="movie-info justify-content-center">
+        <div class="row text-center justify-content-center">
+            <div class="col-md-4">
+                <div class="card justify-content-center" style="width: 25rem;">
+                    <a asp-controller="Home" asp-action="ViewFilms"><img src="~/backgroundImages/Background2.jpg" alt="Image2" class="card-img-top"/></a>
+                    <div class="card-body">
+                        <a asp-controller="Home" asp-action="ViewFilms"><h4 class="card-title">Browse Films</h4></a>
+                        <p class="card-description">Here at OllsWarehouse, you can browse all new, high quality avaialable films that you can purchase for an affordable price like no other retailer!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card justify-content-center" style="width: 25rem;">
+                    <a asp-controller="Home" asp-action="Search"><img src="~/backgroundImages/Background3.jpg" alt="Image3" class="card-img-top" /></a>
+                    <div class="card-body">
+                        <a asp-controller="Home" asp-action="Search"><h4 class="card-title">Quick and Easy to find out more</h4></a>
+                        <p class="card-description">Find out more information about all avaialble films, including a seamless search system that allows you to filter films by age and genre!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card justify-content-center" style="width: 25rem;">
+                    <a asp-controller="MovieManagement" asp-action="Index"><img src="~/backgroundImages/Background4.jpg" alt="Image4" class="card-img-top" /></a>
+                    <div class="card-body">
+                        <a asp-controller="MovieManagement" asp-action="Index"><h4 class="card-title">Manage Data</h4></a>
+                        <p class="card-description">Admin Users can Add, Remove or Edit films in the database, so OllsWarehouse is always up to date and and available for employees/customers!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,105 @@
+﻿@{
+
+    ViewData["Tile"] = "Search Movies";
+
+}
+
+<link href="~/css/Search.css" rel="stylesheet" />
+
+<body>
+
+    <h1 class="text-center" style="font-family: Pacifico">Search For A Movie!</h1>
+    <form asp-action="Search">
+        <div class="movie-label text-center">
+            <input type="text" name="userInput" asp-for="@ViewData["userInput"]" placeholder="Search OllsWarehouse...." />
+
+            <select name="movieCert">
+                @foreach (var cert in (List<string>)@ViewData["movieCertFound"])
+                {
+                    if (cert == (string)ViewData["sortMovieCert"])
+                    {
+                        <option value="@cert" selected>@cert</option>
+                    }
+                    else
+                    {
+                        <option value="@cert">@cert</option>
+                    }
+                }
+            </select>
+
+            <select name="movieGenre">
+                @foreach (var genre in (List<string>)@ViewData["movieGenreFound"])
+                {
+                    if (genre == (string)ViewData["sortMovieGenre"])
+                    {
+                        <option value="@genre" selected>@genre</option>
+                    }
+                    else
+                    {
+                        <option value="@genre">@genre</option>
+                    }
+                }
+            </select>
+
+            <input type="submit" class="btn search-button px-4 py-3 mr-4 btn-dark" value="Search" />
+
+        </div>
+    </form>
+        
+    <div>
+        @if (ViewData["userInput"] != null && ViewData["userInput"].ToString() != String.Empty)
+        {
+            <div class="movie-amount text-center">
+                <h3>@Model.Count results have been found!</h3>
+            </div>
+
+            @foreach (var item in Model)
+            {
+                <div class="movie-card">
+                    <div class="movie-header">
+                        <div class="header-icon-container">
+                            <a asp-controller="Home" asp-action="ViewFilmDetails" asp-route-id="@item.movieID">
+                                <div><img class="movie-Image" src="~/images/@item.movieImage" width="270" height="375" /></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="movie-content">
+                        <div class="movie-content-header">
+                            <a asp-controller="Home" asp-action="ViewFilmDetails" asp-route-id="@item.movieID">
+                                <h3 class="movie-title">@item.movieTitle </h3>
+                            </a>
+                        </div>
+                        <div class="movie-info">
+                            <div class="info-section">
+                                <label>Movie Rating</label>
+                                <span>@item.Stars</span>
+                            </div>
+                            <div class="info-section">
+                                <label>Movie Price</label>
+                                <span>@item.moviePrice </span>
+                            </div>
+                            <div class="info-section">
+                                <label>Movie Release Date</label>
+                                <span>@item.movieReleaseDate</span>
+                            </div>
+                            <div class="info-section">
+                                <label>Movie ID</label>
+                                <span>@item.movieID</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            if (Model.Count == 0)
+            {
+                <div class="movie-amount text-center">
+                    <h3>@Model.Count Sorry, no results have been found</h3>
+                </div>
+            }
+        }
+
+    </div>
+
+</body>
+

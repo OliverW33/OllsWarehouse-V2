@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OllsWarehouse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    @using Microsoft.AspNetCore.Identity
+    @using OllsWarehouse.Areas.Identity.Data
+    @inject SignInManager<ApplicationUser> SignInManager
+    @inject UserManager<ApplicationUser> UserManager
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-danger lighten-1 mb-4">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img class="logo" src="~/logo/logo_small_icon_only_inverted.png" align="left" />
+        </a>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="welcome-message">
+                <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-family: Pacifico">Hello @UserManager.GetUserName(User)!</a>
+            </div>
+        }
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent23"
+                aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent23">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="Home" asp-action="ViewFilms">View Films</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="Home" asp-action="Search">Search Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="Home" asp-action="ShoppingCart">Shopping Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="Home" asp-action="ViewGallery">Gallery</a>
+                </li>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="font-family: Pacifico" asp-area="" asp-controller="MovieManagement" asp-action="Index">Manage Movies</a>
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <form method="post" id="logoutForm" class="form-inline" asp-controller="Security" asp-action="SignOut" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button id="logout" type="submit" class="nav-link btn btn-link text-dark" style="font-family: Pacifico">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="font-family: Pacifico" id="register" asp-controller="Security" asp-action="SignUp">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" style="font-family: Pacifico" id="login" asp-controller="Security" asp-action="SignIn">Login</a>
+                    </li>
+                }
+            </ul>
+            <!-- Links -->
+
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - OllsWarehouse - <a asp-area="" asp-controller="Home"></a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

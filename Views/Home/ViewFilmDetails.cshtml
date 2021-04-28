@@ -1,0 +1,85 @@
+﻿@model OllsWarehouse.Models.Films
+
+@{ ViewData["Title"] = @Model.movieTitle;
+                ViewData["PageHeading"] = @Model.movieTitle; }
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="~/css/ViewFilmDetails.css" rel="stylesheet" />
+
+<div class="card justify-content-center">
+    <div class="row">
+        <aside class="col-sm-4 border-right">
+            <article class="gallery-wrap">
+                <div class="img-big-wrap">
+                    <div><img src="~/images/@Model.movieImage"></div>
+                </div>
+            </article>
+        </aside>
+        <aside class="col-sm-8">
+            <article class="card-body p-5">
+                <h3 class="title mb-3">@Model.movieTitle</h3>
+                <p class="price-detail-wrap">
+                    <span class="price h3 text-warning">
+                        <span class="currency">£</span><span class="num">@Model.moviePrice</span>
+                    </span>
+                    <span class="param param-desc">per Movie</span>
+                </p>
+                <dl class="param param-feature">
+                    <dt>Movie Description:</dt>
+                    <dd class="param param-desc">
+                        <p>
+                            @Model.movieDescription
+                        </p>
+                    </dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie ID:</dt>
+                    <dd class="param param-desc">@Model.movieID</dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie Rating:</dt>
+                    <dd class="param param-desc">@Model.Stars</dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie Genre:</dt>
+                    <dd class="param param-desc">@Model.movieGenre</dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie Age:</dt>
+                    <dd class="param param-desc">@Model.movieCertificate</dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie Release Date:</dt>
+                    <dd class="param param-desc">@Model.movieReleaseDate</dd>
+                </dl>
+                <dl class="param param-feature">
+                    <dt>Movie Trailer:</dt>
+                    <dd class="param param-desc"><a href="https://@Model.movieTrailer">Watch Trailer</a></dd>
+                </dl>
+                <form method="post" class="d-inline">
+                    <input type="hidden" value="@Model.movieID" id="movieID" name="movieID" />
+                    <input type="hidden" value="@Model.movieTitle" id="movieTitle" name="movieTitle" />
+                    <input type="hidden" value="@Model.moviePrice" id="moviePrice" name="moviePrice" />
+                    <div class="param param-feature">
+                        <label for="movieAmount">Movie Quantity:</label>
+                    </div>
+                    <div class="param param-feature">
+                        <input type="number" id="movieAmount" name="movieAmount" min="1" max="5" value="1" />
+                    </div>
+                    <div class="param param-feature">
+                        <button type="submit" class="btn purchase-button px-4 py-3 mr-4 btn-dark" id="purchaseBtn">Add film to cart</button>
+                    </div>
+                </form>
+                <hr>
+                <hr>
+            </article> <!-- card-body.// -->
+        </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+</div> <!-- card.// -->
+
+<script>
+    function purchase() {
+        alert('Movie/s have been added to cart!');
+    }
+    document.getElementById("purchaseBtn").addEventListener("click", purchase);
+</script>

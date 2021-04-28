@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+    ViewData["PageHeading"] = "Shopping Cart";
+    decimal shoppingCartTotal = 0;
+}
+
+<link href="~/css/ShoppingCart.css" rel="stylesheet" />
+
+<body>
+    <div class="shopping-container justify-content-center">
+        <h1 class="shopping-title text-center">Shopping Cart Items!</h1>
+        <p class="shopping-description text-center">Here you will find all the items you have added to your cart!</p>
+
+        @if (Model.Count == 0)
+        {
+            <div class="error justify-content-center">
+                <p class="shopping-description">Your Shopping Cart is empty</p>
+            </div>
+        }
+        else
+        {
+            if (ViewBag.msg != null)
+            {
+                <p class="shopping-description text-center">@ViewBag.msg</p>
+                <p class="shopping-description text-center">&pound;@shoppingCartTotal.ToString("0.00")</p>
+            }
+
+        <table class="table">
+            <tr>
+                <th>Movie ID</th>
+                <th>Movie Title</th>
+                <th>Movie Quantity</th>
+                <th>Movie Price</th>
+                <th>Total Cost</th>
+                <th>Remove Movie</th>
+                <th>Purchase Movie</th>
+            </tr>
+
+            @foreach (var movieItem in Model)
+            {
+                shoppingCartTotal += movieItem.movieAmount * movieItem.moviePrice;
+
+                <tr>
+                    <td>@movieItem.movieID</td>
+                    <td>@movieItem.movieTitle</td>
+                    <td>@movieItem.movieAmount</td>
+                    <td>&pound;@(movieItem.moviePrice.ToString("0.00"))</td>
+                    <td>&pound;@((movieItem.movieAmount * movieItem.moviePrice).ToString("0.00"))</td>
+                    <td>
+                        <form method="post" asp-action="RemoveFromShoppingCart">
+                            <input type="hidden" name="movieID" id="movieID" value="@movieItem.movieID" />
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" asp-action="PurchaseFromShoppingCart">
+                            <input type="hidden" name="movieID" id="movieID" value="@movieItem.movieID" />
+                            <input type="submit" value="Buy" id="purchaseBtn"/>
+                        </form>
+                    </td>
+                </tr>
+           
+            }
+        </table>
+            
+        }
+
+    </div>
+</body>
+
+<script>
+    function purchase() {
+        alert('Movie has been purchased!');
+    }
+    document.getElementById("purchaseBtn").addEventListener("click", purchase);
+</script>
+
+

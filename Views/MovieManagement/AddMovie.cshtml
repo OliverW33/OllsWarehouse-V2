@@ -1,0 +1,62 @@
+﻿@model OllsWarehouse.Models.FilmManipulation
+@{
+    Layout = "MovieManagement";
+    ViewData["Title"] = "Add Film";
+    ViewData["PageHeading"] = "Add Film";
+}
+
+<link href="~/css/FilmManipulation.css" rel="stylesheet" />
+
+<body>
+    <div class="movie-intro">
+        <h1 class="intro-header text-center">Add Film</h1>
+    </div>
+    <div class="movie-description">
+        <p class="intro-description text-center">Here you will be able to add a new film to the OllsWarehouse database!</p>
+    </div>
+
+    <form asp-controller="MovieManagement" asp-action="AddMovie">
+        <div class="info-section">
+            <label asp-for="movieTitle">Movie Name</label>
+            <input class="movie-input" type="text" asp-for="movieTitle" />
+            <span asp-validation-for="movieTitle" class="error"></span>
+        </div>
+        <div class="info-section">
+            <label asp-for="movieCertificate">Movie Age</label>
+            <input class="movie-input" type="text" asp-for="movieCertificate" />
+            <span asp-validation-for="movieCertificate" class="error"></span>
+        </div>
+        <div class="info-section">
+            <label asp-for="movieDescription">Movie Description</label>
+            <input class="movie-input" type="text" asp-for="movieDescription" />
+        </div>
+        <div class="info-section">
+            <label asp-for="movieImage">Movie Image</label>
+            <input class="movie-input" type="text" asp-for="movieImage" />
+        </div>
+        <div class="info-section">
+            <label asp-for="moviePrice">Movie Price</label>
+            <input class="movie-input" type="text" asp-for="moviePrice" />
+        </div>
+        <div class="info-section">
+            <label asp-for="Stars">Movie Rating</label>
+            <input  class="movie-input" type="text" asp-for="Stars" />
+        </div>
+        <div class="info-section">
+            <label asp-for="movieTrailer">Movie Trailer</label>
+            <input class="movie-input" type="text" asp-for="movieTrailer" />
+        </div>
+        <div class="info-section">
+            <label asp-for="movieGenre">Movie Genre</label>
+            <input class="movie-input" type="text" asp-for="movieGenre" />
+        </div>
+        <div class="info-section">
+            <label asp-for="movieBackgroundImage">Movie Background Image</label>
+            <input class="movie-input "type="text" asp-for="movieBackgroundImage" />
+        </div>
+
+        <div class="add-film">
+            <input class="btn px-4 py-3 mr-4 btn-dark" type="submit" value="Add Movie" />
+        </div>
+    </form>
+</body>

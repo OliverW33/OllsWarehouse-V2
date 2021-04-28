@@ -1,0 +1,122 @@
+﻿body {
+    width: 100%;
+    font-family: 'Arimo', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    background-image: linear-gradient(to bottom right, #444141, #404040);
+}
+
+.movie-title {
+    font-family: Pacifico;
+    font-size: 60px;
+    position: center;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.intro-header {
+    font-family: Pacifico;
+    font-size: 60px;
+    position: center;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.intro-description {
+    font-family: Pacifico;
+    font-size: 25px;
+    position: center;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.showSlide {
+    display: none
+}
+
+.showSlide img {
+    width: 100%;
+}
+
+.slidercontainer {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.left, .right {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.right {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.left:hover, .right:hover {
+    background-color: rgba(115, 115, 115, 0.8);
+}
+
+.content {
+    color: #eff5d4;
+    font-size: 30px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}  
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    background-image: linear-gradient(to bottom right, #ef4040, #f34167);
+    border-color: rgba(0, 0, 0, 0.8);
+    font-family: Pacifico;
+    font-size: 25px;
+    color: black;
+}

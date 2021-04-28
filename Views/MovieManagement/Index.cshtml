@@ -1,0 +1,29 @@
+﻿@{ 
+    Layout = "MovieManagement";
+}
+
+<link href="~/css/MovieManagement.css" rel="stylesheet" />
+
+<body>
+    <h1 class="manage-header text-center" style="font-family: Pacifico">Manage Movies!</h1>
+    <p class="manage-para text-center" style="font-family: Pacifico">This page is for admins only to manage movies in OllsWarehouse!</p>
+    <p><a asp-controller="MovieManagement" asp-action="AddMovie" class="add">Add Movie</a></p>
+
+    <table class="table">
+        <tr>
+            <th>Movie Name</th>
+            <th>Edit Movie</th>
+            <th>Delete Movie</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td><a asp-controller="Home" asp-action="ViewFilmDetails" asp-route-id="@item.movieID">@item.movieTitle</a></td>
+            <td><p class="edit-movie"><a asp-controller="MovieManagement" asp-action="UpdateMovie" asp-route-id="@item.movieID" class="edit">Edit Film</a><p/></td>
+            <td><p class="delete-movie"><a asp-controller="MovieManagement" asp-action="DeleteMovie" asp-route-id="@item.movieID" class="delete">Delete Film</a><p/></td>
+        </tr>
+        }
+
+    </table>
+</body>
+
